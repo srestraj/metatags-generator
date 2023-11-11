@@ -54,9 +54,11 @@ export async function GET(
 
     // Parse the HTML content with JSDOM
     const { window } = new JSDOM(html);
+    const title = window.document.querySelector("title");
     const metaTags = window.document.querySelectorAll("meta");
 
     const metaTagsOutput: MetaTagProps[] = [];
+    metaTagsOutput.push({ name: "title", content: title ? title.text : '' })
     metaTags.forEach((tag: Element) => {
       const name = tag.getAttribute("name");
       const property = tag.getAttribute("property");

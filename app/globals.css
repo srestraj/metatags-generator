@@ -2,26 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply rounded-full bg-neutral-800 overflow-hidden;
+  }
+
+  /* Handle */
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-neutral-700 rounded-full;
+  }
+
+  /* Handle on hover */
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+
+  .image-wrapper,
+  .image-wrapper img {
+    @apply max-h-72;
+  }
+
+  .url {
+    @apply break-words;
+  }
+
+  .linkedin {
+    @apply overflow-hidden rounded-[0.8rem] border border-[#ffffff2e] bg-[#1b1f23] max-w-[552px];
+  }
+
+  .linkedin .title {
+    @apply pt-[0.8rem] px-[1.2rem] text-sm text-white/90 font-semibold;
+  }
+
+  .linkedin .url {
+    @apply pb-[0.8rem] px-[1.2rem] text-xs text-white/60 font-normal;
+  }
+
+  .pinterest {
+    @apply w-[236px] max-w-full;
+  }
+
+  .pinterest .image-wrapper {
+    @apply rounded-lg after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black/5;
+  }
+
+  .pinterest .title {
+    @apply relative text-neutral-400 tracking-tight text-sm font-bold after:content-['...'] after:text-base after:absolute after:right-0 after:top-0 after:leading-3;
+  }
+
+  .slack {
+    @apply px-3 max-w-[520px] relative before:content-[''] before:w-1 before:h-full before:bg-[#35373b] before:rounded-full before:left-0 before:top-0 before:absolute;
+  }
+
+  .slack .url {
+    @apply text-[#d1d2d3] text-[15px] font-medium;
+  }
+
+  .slack .title {
+    @apply text-[#1d9bd1] text-[15px] font-bold;
+  }
+
+  .slack .description {
+    @apply text-[#d1d2d3] text-[15px] font-normal;
+  }
+
+  .slack .image-wrapper {
+    @apply max-w-[360px] overflow-hidden rounded-lg mt-1.5 border border-[#35373b];
+  }
 }
