@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { JSDOM } from "jsdom";
 import Error from "next/error";
 
@@ -14,9 +14,7 @@ type NextApiResponse<T> = {
 };
 
 export async function GET(
-  request: {
-    url: string;
-  },
+  request: NextRequest,
   res: NextApiResponse<MetaTagProps[]>
 ) {
   const url = request.url;
