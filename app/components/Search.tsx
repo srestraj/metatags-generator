@@ -12,7 +12,7 @@ const Search = () => {
     event.preventDefault();
     loading = true;
     if (url) {
-      router.push(`/extract?url=${url}`, {
+      router.push(`/extract?url=${url.replace(/\/+$/, "")}`, {
         scroll: true,
       });
       loading = false;

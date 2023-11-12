@@ -46,7 +46,7 @@ const Card = ({ data }: CardProps) => {
                 src={
                   data.icon.includes("https://" || "http://" || data.url)
                     ? data.icon
-                    : `${data.url}${data.icon}`
+                    : `https://${formatUrl(data.url)}${data.icon}`
                 }
                 alt={data.siteName || data.url}
               />
