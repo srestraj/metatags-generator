@@ -26,11 +26,15 @@
 
   .image-wrapper,
   .image-wrapper img {
-    @apply md:max-h-72 max-h-32;
+    @apply md:max-h-72 max-h-52;
+  }
+
+  .description {
+    @apply break-words;
   }
 
   .url {
-    @apply break-words;
+    @apply break-all;
   }
 
   .facebook {
