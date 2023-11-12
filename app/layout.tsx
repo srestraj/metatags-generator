@@ -8,6 +8,11 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.BASE_URL
+      ? process.env.BASE_URL?.toString()
+      : "https://metatags-extractor.vercel.app"
+  ),
   title: "Meta Tags Extractor",
   description: "Extract Meta tags from URL",
   alternates: {
