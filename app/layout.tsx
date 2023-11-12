@@ -10,6 +10,18 @@ const beVietnamPro = Be_Vietnam_Pro({
 export const metadata: Metadata = {
   title: "Meta Tags Extractor",
   description: "Extract Meta tags from URL",
+  alternates: {
+    canonical: "https://metatags-extractor.vercel.app",
+  },
+  openGraph: {
+    title: "Meta Tags Extractor",
+    images: ["https://metatags-extractor.vercel.app/img/og-image.png"],
+    description: "Extract Meta tags from URL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
