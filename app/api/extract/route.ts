@@ -52,11 +52,13 @@ export async function GET(
 
     // Parse the HTML content with JSDOM
     const { window } = new JSDOM(html);
-    const title = window.document.querySelector("title");
-    const metaTags = window.document.querySelectorAll("meta");
+    const icon: HTMLLinkElement | null = window.document.querySelector("link[rel='icon']");
+    const metaTags: NodeListOf<HTMLMetaElement> = window.document.querySelectorAll("meta");
+    const title: HTMLTitleElement | null = window.document.querySelector("title");
 
     const metaTagsOutput: MetaTagProps[] = [];
     metaTagsOutput.push({ name: "title", content: title ? title.text : '' })
+    metaTagsOutput.push({ name: "icon", content: icon ? icon.href : '' })
     metaTags.forEach((tag: Element) => {
       const name = tag.getAttribute("name");
       const property = tag.getAttribute("property");

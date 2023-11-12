@@ -18,6 +18,8 @@ type MetaTag = {
   twitterTitle: string | undefined | null;
   twitterDescription: string | undefined | null;
   twitterImage: string | undefined | null;
+  siteIcon: string | undefined | null;
+  ogSiteName: string | undefined | null;
 };
 
 const extractMetatags = async (url: string) => {
@@ -60,6 +62,8 @@ const Extract = async ({ searchParams }: { searchParams: { url: string } }) => {
     twitterTitle: extractMetadata("twitter:title"),
     twitterDescription: extractMetadata("twitter:description"),
     twitterImage: extractMetadata("twitter:image"),
+    siteIcon: extractMetadata("icon"),
+    ogSiteName: extractMetadata("og:site_name"),
   };
 
   return (
@@ -94,6 +98,8 @@ const Extract = async ({ searchParams }: { searchParams: { url: string } }) => {
               image={metadata.ogImage ? metadata.ogImage : ""}
               title={metadata.title ? metadata.title : ""}
               url={searchParams.url}
+              icon={metadata.siteIcon ? metadata.siteIcon : ""}
+              siteName={metadata.ogSiteName ? metadata.ogSiteName : null}
             />
           </div>
         </div>

@@ -26,11 +26,23 @@
 
   .image-wrapper,
   .image-wrapper img {
-    @apply max-h-72;
+    @apply md:max-h-72 max-h-32;
   }
 
   .url {
     @apply break-words;
+  }
+
+  .facebook {
+    @apply max-w-[500px] overflow-hidden rounded-xl bg-[#3a3b3c] border border-[#3a3b3c];
+  }
+
+  .facebook .url {
+    @apply uppercase text-[#B0B3B8] font-normal text-[0.8125rem] pt-3 px-4 mb-2;
+  }
+
+  .facebook .title {
+    @apply pb-3 px-4 font-semibold text-[1.0625rem] text-[#E4E6EB];
   }
 
   .linkedin {
@@ -75,5 +87,13 @@
 
   .slack .image-wrapper {
     @apply max-w-[360px] overflow-hidden rounded-lg mt-1.5 border border-[#35373b];
+  }
+
+  .twitter {
+    @apply max-w-[506px] overflow-hidden rounded-2xl bg-black border border-[#2f3336] text-[#e7e9ea] relative;
+  }
+
+  .twitter .url {
+    @apply absolute left-3 bottom-3 bg-[#9d99997a] text-[13px] text-white px-1 rounded;
   }
 }

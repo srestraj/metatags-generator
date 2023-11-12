@@ -1,10 +1,12 @@
 type CardProps = {
   data: {
     description: string;
+    icon: string;
     image: string;
+    siteName: string | null;
     title: string;
-    url: string;
     type: string;
+    url: string;
   };
 };
 
@@ -35,15 +37,42 @@ const Card = ({ data }: CardProps) => {
             }
           </div>
         )}
-        {data.type === "slack" && <p className="url">{data.url}</p>}
-        <p className="title">{data.title}</p>
-        {data.type === "twitter" ||
-          (data.type !== "slack" && data.type !== "pinterest" && (
-            <p className="url">{formatUrl(data.url)}</p>
-          ))}
-        {data.type !== "pinterest" && data.type !== "linkedin" && (
-          <p className="description">{data.description}</p>
+        {data.type === "slack" && (
+          <div className="inline-flex items-center gap-2">
+            {data.icon && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                className="w-4"
+                src={
+                  data.icon.includes("https://" || "http://" || data.url)
+                    ? data.icon
+                    : `${data.url}${data.icon}`
+                }
+                alt={data.siteName || data.url}
+              />
+            )}
+            <p className="url">{data.siteName ? data.siteName : data.url}</p>
+          </div>
         )}
+        {data.type === "facebook" && (
+          <p className="url">{formatUrl(data.url)}</p>
+        )}
+        {data.type === "twitter" && (
+          <span className="url">{formatUrl(data.url)}</span>
+        )}
+        {data.type !== "twitter" && <p className="title">{data.title}</p>}
+        {data.type === "twitter" ||
+          (data.type !== "slack" &&
+            data.type !== "pinterest" &&
+            data.type !== "facebook" && (
+              <p className="url">{formatUrl(data.url)}</p>
+            ))}
+        {data.type !== "pinterest" &&
+          data.type !== "linkedin" &&
+          data.type !== "facebook" &&
+          data.type !== "twitter" && (
+            <p className="description">{data.description}</p>
+          )}
         {data.type === "slack" && (
           <div className="image-wrapper relative overflow-hidden">
             {
