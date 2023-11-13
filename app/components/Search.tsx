@@ -1,21 +1,22 @@
 "use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "./icons/Loader";
 import SearchIcon from "./icons/SearchIcon";
 
 const Search = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   let url: string | null = "";
-  let loading: boolean = false;
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    loading = true;
+    setLoading(true);
     if (url) {
       router.push(`/extract?url=${url.replace(/\/+$/, "")}`, {
         scroll: true,
       });
-      loading = false;
+      setLoading(false);
     }
   };
 
@@ -40,8 +41,25 @@ const Search = () => {
         </div>
         <div className="flex-[0_0_auto]">
           <button
+            disabled={loading}
             type="submit"
-            className="group w-[46px] h-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg bg-[#b4ff5c] text-neutral-800 disabled:opacity-50 disabled:pointer-events-none"
+            className="
+              group
+              w-[46px]
+              h-[46px]
+              inline-flex
+              justify-center
+              items-center
+              gap-x-2
+              text-sm
+              font-semibold
+              rounded-lg
+              bg-[#b4ff5c]
+              text-neutral-800
+              disabled:opacity-50
+              disabled:pointer-events-none
+              disabled:cursor-not-allowed
+            "
           >
             {loading ? (
               <Loader classNames="w-4 h-4 animate-spin" />
