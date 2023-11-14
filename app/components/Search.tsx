@@ -16,7 +16,6 @@ const Search = () => {
       router.push(`/extract?url=${url.replace(/\/+$/, "")}`, {
         scroll: true,
       });
-      setLoading(false);
     }
   };
 
