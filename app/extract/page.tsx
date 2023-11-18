@@ -20,6 +20,8 @@ type MetaTag = {
   twitterImage: string | undefined | null;
   siteIcon: string | undefined | null;
   ogSiteName: string | undefined | null;
+  ogType: string | undefined | null;
+  twitterCardType: string | undefined | null;
 };
 
 const extractMetatags = async (url: string) => {
@@ -64,6 +66,8 @@ const Extract = async ({ searchParams }: { searchParams: { url: string } }) => {
     twitterImage: extractMetadata("twitter:image"),
     siteIcon: extractMetadata("icon"),
     ogSiteName: extractMetadata("og:site_name"),
+    ogType: extractMetadata("og:type"),
+    twitterCardType: extractMetadata("twitter:card"),
   };
 
   return (
@@ -83,6 +87,11 @@ const Extract = async ({ searchParams }: { searchParams: { url: string } }) => {
                 : ""
             }
             image={metadata.ogImage ? metadata.ogImage : ""}
+            ogType={metadata.ogType ? metadata.ogType : ""}
+            twitterCardType={
+              metadata.twitterCardType ? metadata.twitterCardType : ""
+            }
+            url={searchParams.url}
           />
           <div className="rounded-xl w-full py-4 md:px-6 px-4 bg-neutral-800 md:col-span-2">
             <SocialCard
