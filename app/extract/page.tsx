@@ -86,7 +86,13 @@ const Extract = async ({ searchParams }: { searchParams: { url: string } }) => {
                 ? metadata.twitterDescription
                 : ""
             }
-            image={metadata.ogImage ? metadata.ogImage : ""}
+            image={
+              metadata.ogImage
+                ? metadata.ogImage
+                : metadata.twitterImage
+                ? metadata.twitterImage
+                : ""
+            }
             ogType={metadata.ogType ? metadata.ogType : ""}
             twitterCardType={
               metadata.twitterCardType ? metadata.twitterCardType : ""
@@ -104,7 +110,13 @@ const Extract = async ({ searchParams }: { searchParams: { url: string } }) => {
                   ? metadata.twitterDescription
                   : ""
               }
-              image={metadata.ogImage ? metadata.ogImage : ""}
+              image={
+                metadata.ogImage
+                  ? metadata.ogImage
+                  : metadata.twitterImage
+                  ? metadata.twitterImage
+                  : ""
+              }
               title={metadata.title ? metadata.title : ""}
               url={searchParams.url}
               icon={metadata.siteIcon ? metadata.siteIcon : ""}
