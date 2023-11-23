@@ -6,28 +6,12 @@ import { NextRequest } from "next/server";
 export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
-  const lightFont = await fetch(
-    new URL("../../assets/fonts/BeVietnamPro-Light.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
   const regularFont = await fetch(
     new URL("../../assets/fonts/BeVietnamPro-Regular.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const mediumFont = await fetch(
     new URL("../../assets/fonts/BeVietnamPro-Medium.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
-  const semiboldFont = await fetch(
-    new URL("../../assets/fonts/BeVietnamPro-SemiBold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
-  const boldFont = await fetch(
-    new URL("../../assets/fonts/BeVietnamPro-Bold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
-  const extraboldFont = await fetch(
-    new URL("../../assets/fonts/BeVietnamPro-ExtraBold.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const blackFont = await fetch(
@@ -167,12 +151,6 @@ export async function GET(request: NextRequest) {
       fonts: [
         {
           name: "BeVietnamPro",
-          data: lightFont,
-          style: "normal",
-          weight: 300,
-        },
-        {
-          name: "BeVietnamPro",
           data: regularFont,
           style: "normal",
           weight: 400,
@@ -182,24 +160,6 @@ export async function GET(request: NextRequest) {
           data: mediumFont,
           style: "normal",
           weight: 500,
-        },
-        {
-          name: "BeVietnamPro",
-          data: semiboldFont,
-          style: "normal",
-          weight: 600,
-        },
-        {
-          name: "BeVietnamPro",
-          data: boldFont,
-          style: "normal",
-          weight: 700,
-        },
-        {
-          name: "BeVietnamPro",
-          data: extraboldFont,
-          style: "normal",
-          weight: 800,
         },
         {
           name: "BeVietnamPro",
