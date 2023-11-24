@@ -47,13 +47,11 @@ export async function GET(request: NextRequest) {
               <img
                 src={logo}
                 tw={`${
-                  logoRatio === "1:1"
-                    ? "w-[50px] h-[50px]"
-                    : logoRatio === "2:1"
-                    ? "w-[100px] h-[50px]"
-                    : logoRatio === "3:1"
-                    ? "w-[150px] h-[50px]"
-                    : "w-[100px] h-[50px]"
+                  logoRatio
+                    ? `w-[${parseInt(logoRatio.split(":")[0]) * 50}px] h-[${
+                        parseInt(logoRatio.split(":")[1]) * 50
+                      }px]`
+                    : "w-[50px] h-[50px]"
                 }`}
               />
             ) : (
