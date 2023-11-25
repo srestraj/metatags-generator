@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ImageGeneratorSidebar from "../components/ImageGeneratorSidebar";
 import PageHeader from "../components/PageHeader";
 
@@ -21,6 +21,7 @@ const GenerateImage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [generatedImgUrl, setImageUrl] = useState<string>("/api/og");
   const [imgLoading, setImgLoading] = useState<boolean>(false);
+  const imagesWrapper = useRef<HTMLDivElement | null>(null);
 
   const types: ImageTypeProps[] = [
     {
@@ -55,11 +56,10 @@ const GenerateImage = () => {
     setLoading(true);
     try {
       setImgLoading(true);
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
+      if (imagesWrapper.current) {
+        imagesWrapper.current.style.scrollMargin = "2rem";
+        imagesWrapper.current.scrollIntoView({ behavior: "smooth" });
+      }
       const updatedOgImgUrl = `/api/og?title=${title}&desc=${desc}&url=${url}&logo=${logoUrl}&mainImage=${mainImgUrl}&logoRatio=${logoRatio}`;
       await setImageUrl(updatedOgImgUrl);
       const images: NodeListOf<HTMLImageElement> =
@@ -83,7 +83,10 @@ const GenerateImage = () => {
       <section className="w-full md:max-w-screen-xl mx-auto sm:px-6 px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 items-start lg:gap-8 md:gap-4 gap-4">
           <ImageGeneratorSidebar handleParamsUpdate={updateImage} />
-          <div className="rounded-xl w-full py-4 md:px-6 px-4 bg-neutral-800 md:col-span-2">
+          <div
+            ref={imagesWrapper}
+            className="rounded-xl w-full py-4 md:px-6 px-4 bg-neutral-800 md:col-span-2"
+          >
             <div className="w-full flex flex-col gap-6">
               {types.map((type: ImageTypeProps, index: number) => (
                 <div key={index} className="w-full flex flex-col gap-2">
@@ -97,8 +100,8 @@ const GenerateImage = () => {
                     {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        className={`w-full h-full ${
-                          imgLoading ? "scale-0" : "scale-100"
+                        className={`w-full ${
+                          imgLoading ? "h-0" : "h-full"
                         } transition-all duration-300 max-h-full object-cover object-center relative og`}
                         src={
                           generatedImgUrl === "/api/og"
