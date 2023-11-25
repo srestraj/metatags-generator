@@ -76,18 +76,18 @@ export async function GET(request: NextRequest) {
               </div>
               <div tw="w-1/2 flex justify-end">
                 <div tw="flex w-full h-full justify-end">
-                  {mainImage ? (
-                    <img
-                      tw="mx-auto w-[500px] h-[400px] rounded-xl"
-                      src={mainImage}
-                      alt="sample image"
-                      style={{
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : (
-                    <Globe />
-                  )}
+                  <img
+                    tw="mx-auto w-[500px] h-[400px] rounded-xl"
+                    src={
+                      mainImage
+                        ? mainImage
+                        : "https://images.unsplash.com/photo-1641808890181-fb0ca79e0018?q=80&w=800&auto=format&fit=crop"
+                    }
+                    alt="main image"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -104,60 +104,183 @@ export async function GET(request: NextRequest) {
 
   const renderSplitOg = () => {
     return (
+      <div tw="flex w-full h-full bg-[#0a0909]">
+        <div tw="flex w-1/2 relative">
+          <div tw="relative flex inset-0 w-full h-full">
+            <img
+              src={
+                mainImage
+                  ? mainImage
+                  : "https://images.unsplash.com/photo-1641808890181-fb0ca79e0018?q=80&w=800&auto=format&fit=crop"
+              }
+              alt="main image"
+              tw="w-full h-full"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+            />
+          </div>
+        </div>
+        <div tw="flex w-1/2 p-16 relative">
+          <div tw="flex flex-col w-full h-full items-start justify-center">
+            <h2 tw="text-4xl font-black text-neutral-100 mb-2">
+              {title ? title : "Sample title"}
+            </h2>
+            <p tw="text-xl font-medium text-neutral-300 mt-0">
+              {description
+                ? description.length >= 300
+                  ? `${description.slice(0, 300)}...`
+                  : description
+                : "Extract meta tags from any URL"}
+            </p>
+          </div>
+          <div tw="flex absolute top-8 left-16">
+            {logo ? (
+              <img
+                src={logo}
+                tw={`${
+                  logoRatio
+                    ? `w-[${parseInt(logoRatio.split(":")[0]) * 50}px] h-[${
+                        parseInt(logoRatio.split(":")[1]) * 50
+                      }px]`
+                    : "w-[50px] h-[50px]"
+                }`}
+              />
+            ) : (
+              <LogoIcon />
+            )}
+          </div>
+          <div tw="flex absolute bottom-8 left-16">
+            <span tw="text-neutral-100 font-medium text-sm text-neutral-400">
+              {website ? website : "www.example.com"}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderGithubStyleOg = () => {
+    return (
       <div
+        tw="flex w-full h-full rounded-xl p-1"
         style={{
-          display: "flex",
-          height: "100%",
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          letterSpacing: "-.02em",
-          fontWeight: 700,
-          background: "white",
+          backgroundImage:
+            "linear-gradient(140deg, #86efac 0%, #3b82f6 50%, #9333ea 75%)",
         }}
       >
-        <div
-          style={{
-            left: 42,
-            top: 42,
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <span
+        <div tw="flex relative w-full bg-white rounded-[10px] py-6">
+          <div tw="flex w-full flex-col my-auto px-20">
+            <span tw="text-gray-500 text-base">
+              {title ? title : "Sample title"}
+            </span>
+            <h2 tw="text-5xl text-gray-900 mt-0.5 font-black">
+              {description
+                ? description.length >= 150
+                  ? `${description.slice(0, 150)}...`
+                  : description
+                : "Extract meta tags from any URL"}
+            </h2>
+          </div>
+          <div tw="w-full absolute bottom-12 flex items-center justify-between px-20 mx-auto">
+            <div tw="flex items-center justify-start">
+              <div tw="w-16 h-16 flex items-center justify-center rounded-full bg-gray-800 overflow-hidden border-2 border-gray-800 mr-3">
+                <img
+                  src={
+                    mainImage
+                      ? mainImage
+                      : "https://images.unsplash.com/photo-1641808890181-fb0ca79e0018?q=80&w=800&auto=format&fit=crop"
+                  }
+                  alt="main image"
+                  tw="w-full h-full"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
+              </div>
+              <span tw="text-gray-700 text-base">
+                {website ? website : "www.example.com"}
+              </span>
+            </div>
+            {logo ? (
+              <img
+                src={logo}
+                tw={`${
+                  logoRatio
+                    ? `w-[${parseInt(logoRatio.split(":")[0]) * 50}px] h-[${
+                        parseInt(logoRatio.split(":")[1]) * 50
+                      }px]`
+                    : "w-[50px] h-[50px]"
+                }`}
+              />
+            ) : (
+              <LogoIcon />
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const fullImageBg = () => {
+    return (
+      <div tw="flex w-full h-full bg-[#0a0909] relative">
+        <div tw="relative flex inset-0 w-full h-full">
+          <img
+            src={
+              mainImage
+                ? mainImage
+                : "https://images.unsplash.com/photo-1641808890181-fb0ca79e0018?q=80&w=800&auto=format&fit=crop"
+            }
+            alt="main image"
+            tw="w-full h-full"
             style={{
-              width: 24,
-              height: 24,
-              background: "black",
+              objectFit: "cover",
+              objectPosition: "center",
             }}
           />
-          <span
-            style={{
-              marginLeft: 8,
-              fontSize: 20,
-            }}
-          >
-            rauchg.com
-          </span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            padding: "20px 50px",
-            margin: "0 42px",
-            fontSize: 40,
-            width: "auto",
-            maxWidth: 550,
-            textAlign: "center",
-            backgroundColor: "black",
-            color: "white",
-            lineHeight: 1.4,
-          }}
-        >
-          {title ? title : "Meta Tags Extractor"}
+          <div tw="flex w-full h-full absolute inset-0 bg-black/50" />
+          <div tw="flex absolute top-8 left-8">
+            {logo ? (
+              <img
+                src={logo}
+                tw={`${
+                  logoRatio
+                    ? `w-[${parseInt(logoRatio.split(":")[0]) * 50}px] h-[${
+                        parseInt(logoRatio.split(":")[1]) * 50
+                      }px]`
+                    : "w-[50px] h-[50px]"
+                }`}
+              />
+            ) : (
+              <LogoIcon />
+            )}
+          </div>
+          <div tw="flex w-full items-end justify-between p-16 absolute bottom-0 px-16">
+            <div tw="flex w-1/2">
+              <span tw="text-neutral-100 font-medium text-sm text-neutral-400">
+                {website ? website : "www.example.com"}
+              </span>
+            </div>
+            <div tw="flex flex-col w-1/2 items-end justify-center">
+              <h2 tw="text-7xl font-black text-neutral-100 text-right">
+                {title
+                  ? title.length >= 25
+                    ? `${title.slice(0, 25)}...`
+                    : title
+                  : "Sample title"}
+              </h2>
+              <p tw="text-lg font-medium text-neutral-300 text-right max-w-sm mt-0">
+                {description
+                  ? description.length >= 150
+                    ? `${description.slice(0, 150)}...`
+                    : description
+                  : "Extract meta tags from any URL"}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -168,6 +291,10 @@ export async function GET(request: NextRequest) {
       ? renderDefault()
       : type === "split"
       ? renderSplitOg()
+      : type === "fullImageBg"
+      ? fullImageBg()
+      : type === "github"
+      ? renderGithubStyleOg()
       : renderDefault(),
     {
       width: 1200,
