@@ -17,10 +17,8 @@ type ImageTypeProps = {
   type: string;
 };
 
-const OgImageGenerator = () => {
+const GenerateImage = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [ogImgUrl, setOgImgUrl] = useState<string>("/api/og");
-  const [imgData, setImgData] = useState<ImgProps | null>(null);
   const [generatedImgUrl, setImageUrl] = useState<string>("/api/og");
 
   const types: ImageTypeProps[] = [
@@ -50,24 +48,13 @@ const OgImageGenerator = () => {
     mainImgUrl: string,
     logoRatio: string
   ) => {
-    setImgData({
-      title,
-      desc,
-      url,
-      logoUrl,
-      mainImgUrl,
-    });
     if (loading) {
       return;
     }
     setLoading(true);
     try {
-      await setOgImgUrl(
-        `/api/og?title=${title}&desc=${desc}&url=${url}&logo=${logoUrl}&mainImage=${mainImgUrl}&logoRatio=${logoRatio}`
-      );
-      setImageUrl(
-        `/api/og?title=${title}&desc=${desc}&url=${url}&logo=${logoUrl}&mainImage=${mainImgUrl}&logoRatio=${logoRatio}`
-      );
+      const updatedOgImgUrl = `/api/og?title=${title}&desc=${desc}&url=${url}&logo=${logoUrl}&mainImage=${mainImgUrl}&logoRatio=${logoRatio}`;
+      await setImageUrl(updatedOgImgUrl);
     } catch (error) {
       console.error(error);
     } finally {
@@ -88,15 +75,15 @@ const OgImageGenerator = () => {
                   <p className="text-neutral-200 font-medium text-lg">
                     {type.name}
                   </p>
-                  <div className="group w-full overflow-hidden md:rounded-2xl rounded-xl relative">
+                  <div className="group w-full overflow-hidden md:rounded-2xl rounded-xl relative md:min-h-[400px] min-h-[120px] bg-neutral-900">
                     {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        className="w-full h-auto max-h-full object-cover object-center relative"
+                        className="w-full h-full max-h-full object-cover object-center relative"
                         src={
-                          ogImgUrl === "/api/og"
-                            ? `${ogImgUrl}?type=${type.type}`
-                            : `${ogImgUrl}&type=${type.type}`
+                          generatedImgUrl === "/api/og"
+                            ? `${generatedImgUrl}?type=${type.type}`
+                            : `${generatedImgUrl}&type=${type.type}`
                         }
                         alt={`${type.name} og preview`}
                       />
@@ -125,4 +112,4 @@ const OgImageGenerator = () => {
   );
 };
 
-export default OgImageGenerator;
+export default GenerateImage;
