@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ImageGeneratorSidebar from "../components/ImageGeneratorSidebar";
-import Image from "next/image";
 import PageHeader from "../components/PageHeader";
 
 type ImgProps = {
@@ -90,19 +89,18 @@ const OgImageGenerator = () => {
                     {type.name}
                   </p>
                   <div className="group w-full overflow-hidden md:rounded-2xl rounded-xl relative">
-                    <Image
-                      width={800}
-                      height={400}
-                      src={`${process.env.NEXT_PUBLIC_SITE_PROTOCOL}://${
-                        process.env.NEXT_PUBLIC_SITE_NAME
-                      }${
-                        ogImgUrl === "/api/og"
-                          ? `${ogImgUrl}?type=${type.type}`
-                          : `${ogImgUrl}&type=${type.type}`
-                      }`}
-                      alt="OG image preview"
-                      className="object-cover object-center relative"
-                    />
+                    {
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className="w-full h-auto max-h-full object-cover object-center relative"
+                        src={
+                          ogImgUrl === "/api/og"
+                            ? `${ogImgUrl}?type=${type.type}`
+                            : `${ogImgUrl}&type=${type.type}`
+                        }
+                        alt={`${type.name} og preview`}
+                      />
+                    }
                     <div className="group-hover:grid hidden absolute w-full h-full bg-neutral-900/50 inset-0 transition-all duration-700 place-content-center place-items-center">
                       <a
                         href={
@@ -113,7 +111,7 @@ const OgImageGenerator = () => {
                         target="_blank"
                         className="text-neutral-800 font-medium px-5 py-2 bg-neutral-100 rounded-full text-sm hover:text-neutral-100 hover:bg-neutral-900"
                       >
-                        View original
+                        Open in new tab
                       </a>
                     </div>
                   </div>
