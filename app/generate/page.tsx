@@ -20,6 +20,7 @@ type ImageTypeProps = {
 const GenerateImage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [generatedImgUrl, setImageUrl] = useState<string>("/api/og");
+  const [imgLoading, setImgLoading] = useState<boolean>(false);
 
   const types: ImageTypeProps[] = [
     {
@@ -53,8 +54,22 @@ const GenerateImage = () => {
     }
     setLoading(true);
     try {
+      setImgLoading(true);
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
       const updatedOgImgUrl = `/api/og?title=${title}&desc=${desc}&url=${url}&logo=${logoUrl}&mainImage=${mainImgUrl}&logoRatio=${logoRatio}`;
       await setImageUrl(updatedOgImgUrl);
+      const images: NodeListOf<HTMLImageElement> =
+        document.querySelectorAll(".og");
+
+      Array.from(images).forEach((img: HTMLImageElement) => {
+        img.addEventListener("load", () => {
+          setImgLoading(false);
+        });
+      });
     } catch (error) {
       console.error(error);
     } finally {
@@ -76,10 +91,15 @@ const GenerateImage = () => {
                     {type.name}
                   </p>
                   <div className="group w-full overflow-hidden md:rounded-2xl rounded-xl relative md:min-h-[400px] min-h-[120px] bg-neutral-900">
+                    {imgLoading && (
+                      <div className="absolute w-full h-full animate-pulse bg-neutral-600/50" />
+                    )}
                     {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        className="w-full h-full max-h-full object-cover object-center relative"
+                        className={`w-full h-full ${
+                          imgLoading ? "scale-0" : "scale-100"
+                        } transition-all duration-300 max-h-full object-cover object-center relative og`}
                         src={
                           generatedImgUrl === "/api/og"
                             ? `${generatedImgUrl}?type=${type.type}`
@@ -88,7 +108,7 @@ const GenerateImage = () => {
                         alt={`${type.name} og preview`}
                       />
                     }
-                    <div className="group-hover:grid hidden absolute w-full h-full bg-neutral-900/50 inset-0 transition-all duration-700 place-content-center place-items-center">
+                    <div className="grid absolute w-full h-full bg-neutral-900/50 inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 place-content-center place-items-center">
                       <a
                         href={
                           generatedImgUrl === "/api/og"
