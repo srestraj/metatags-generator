@@ -93,11 +93,13 @@ const OgImageGenerator = () => {
                     <Image
                       width={800}
                       height={400}
-                      src={
+                      src={`${process.env.NEXT_PUBLIC_SITE_PROTOCOL}://${
+                        process.env.NEXT_PUBLIC_SITE_NAME
+                      }${
                         ogImgUrl === "/api/og"
                           ? `${ogImgUrl}?type=${type.type}`
                           : `${ogImgUrl}&type=${type.type}`
-                      }
+                      }`}
                       alt="OG image preview"
                       className="object-cover object-center relative"
                     />
