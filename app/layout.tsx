@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ["latin-ext"],
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${beVietnamPro.className} bg-[#0a0909]`}>
+        <Navbar />
         {children}
       </body>
     </html>
