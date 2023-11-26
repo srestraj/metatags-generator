@@ -32,7 +32,7 @@ const Card = ({ data }: CardProps) => {
               <img
                 src={data.image}
                 alt={data.title}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center social-image"
               />
             }
           </div>
@@ -60,7 +60,9 @@ const Card = ({ data }: CardProps) => {
         {data.type === "twitter" && (
           <span className="url">{formatUrl(data.url)}</span>
         )}
-        {data.type !== "twitter" && <p className="title">{data.title}</p>}
+        {data.type !== "twitter" && (
+          <p className="title social-title">{data.title}</p>
+        )}
         {data.type === "twitter" ||
           (data.type !== "slack" &&
             data.type !== "pinterest" &&
@@ -71,7 +73,7 @@ const Card = ({ data }: CardProps) => {
           data.type !== "linkedin" &&
           data.type !== "facebook" &&
           data.type !== "twitter" && (
-            <p className="description">{data.description}</p>
+            <p className="description social-description">{data.description}</p>
           )}
         {data.type === "slack" && (
           <div className="image-wrapper relative overflow-hidden">
@@ -80,7 +82,7 @@ const Card = ({ data }: CardProps) => {
               <img
                 src={data.image}
                 alt={data.title}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center social-image"
               />
             }
           </div>

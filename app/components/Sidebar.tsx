@@ -75,6 +75,30 @@ const Sidebar = ({
     setUpdatedImage(result);
   };
 
+  useEffect(() => {
+    const descriptions = document.querySelectorAll(
+      ".social-description"
+    ) as NodeListOf<HTMLParagraphElement>;
+    const socialImages = document.querySelectorAll(
+      ".social-image"
+    ) as NodeListOf<HTMLImageElement>;
+    const titles = document.querySelectorAll(
+      ".social-title"
+    ) as NodeListOf<HTMLParagraphElement>;
+
+    Array.from(descriptions).forEach((desc: HTMLParagraphElement) => {
+      desc.innerHTML = updatedDescription;
+    });
+
+    Array.from(socialImages).forEach((img: HTMLImageElement) => {
+      img.src = updatedImage;
+    });
+
+    Array.from(titles).forEach((title: HTMLParagraphElement) => {
+      title.innerHTML = updatedTitle;
+    });
+  }, [updatedDescription, updatedImage, updatedTitle]);
+
   return (
     <>
       <div className="w-full bg-neutral-800 p-4 rounded-xl flex flex-col gap-5 md:sticky md:top-8">
@@ -98,7 +122,7 @@ const Sidebar = ({
               setUpdatedTitle(event.target.value)
             }
             id="title"
-            maxLength={90}
+            maxLength={150}
           />
         </div>
         <div className="w-full">
