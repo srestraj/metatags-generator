@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Loader from "./icons/Loader";
 import SearchIcon from "./icons/SearchIcon";
+import Input from "./inputs/Input";
 
 const Search = () => {
   const router = useRouter();
@@ -27,15 +28,14 @@ const Search = () => {
     <form onSubmit={handleFormSubmit}>
       <div className="relative z-10 flex space-x-3 p-3 bg-neutral-800 rounded-lg shadow-lg shadow-neutral-900">
         <div className="flex-[1_0_0%]">
-          <input
-            type="url"
-            defaultValue={url}
-            className="py-2.5 px-4 block w-full border-0 bg-transparent text-neutral-200 focus:outline-none"
-            placeholder="Enter website URL"
-            required
-            onChange={validateUrl}
+          <Input
             autoFocus={true}
-            autoComplete="off"
+            defaultVal={url}
+            id="urlInput"
+            noBorder={true}
+            onChange={validateUrl}
+            placeHolder="Enter website URL"
+            type="url"
           />
         </div>
         <div className="flex-[0_0_auto]">

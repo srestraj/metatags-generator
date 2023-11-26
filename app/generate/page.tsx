@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import ImageGeneratorSidebar from "../components/ImageGeneratorSidebar";
+import GeneratorSidebar from "../components/GeneratorSidebar";
 import PageHeader from "../components/PageHeader";
 
 type ImgProps = {
@@ -82,7 +82,7 @@ const GenerateImage = () => {
       <PageHeader title="Generate OG image" />
       <section className="w-full md:max-w-screen-xl mx-auto sm:px-6 px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 items-start lg:gap-8 md:gap-4 gap-4">
-          <ImageGeneratorSidebar handleParamsUpdate={updateImage} />
+          <GeneratorSidebar handleParamsUpdate={updateImage} />
           <div
             ref={imagesWrapper}
             className="rounded-xl w-full py-4 md:px-6 px-4 bg-neutral-800 md:col-span-2"

@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Meta Tags Extractor App
+
+A meta tags extractor web app built using Next.js, Tailwind CSS, and TypeScript that enables users to extract meta tags from a given URL. Additionally, the app provides functionality to generate **og:images** that you can use for your own sites.
+
+## Features
+
+- Extract meta tags from a provided URL.
+- Generate og:images.
+- Built with Next.js for a fast and optimized web experience.
+- Styled using Tailwind CSS for a modern and responsive design.
+- TypeScript for improved developer experience and code quality.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Make sure you have Node.js and npm installed on your machine.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/srestraj/metatags-generator.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+    cd metatags-generator
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Running the App
 
-## Learn More
+Run `npm run dev` to start the dev server and visit http://localhost:3000 in your browser to access the app.
 
-To learn more about Next.js, take a look at the following resources:
+### Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+On the homepage, enter any URL in the input field and submit it to retrieve and display meta tags from that site.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Use the **Generate og:image** feature to create Open Graph images for social media sharing. You can choose from a variety of templates. More coming soon.
 
-## Deploy on Vercel
+### Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Cloudinary](https://cloudinary.com/)
