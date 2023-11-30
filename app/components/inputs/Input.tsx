@@ -36,10 +36,13 @@ const Input = ({
         rounded-lg
         transition-all
         duration-300
-        ${noBorder ? "" : "border border-neutral-600 focus:border-[#b4ff5c]"}
+        focus:bg-transparent
+        active:bg-transparent
+        ${noBorder ? "" : "border border-neutral-600 focus:border-brand"}
       `}
       autoFocus={autoFocus}
       placeholder={placeHolder}
+      autoComplete="off"
     />
   );
 };

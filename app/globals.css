@@ -38,19 +38,19 @@
   }
 
   .facebook {
-    @apply max-w-[500px] overflow-hidden rounded-xl bg-[#3a3b3c] border border-[#3a3b3c];
+    @apply max-w-[500px] overflow-hidden rounded-xl bg-facebook-background border border-facebook-background;
   }
 
   .facebook .url {
-    @apply uppercase text-[#B0B3B8] font-normal text-[0.8125rem] pt-3 px-4 mb-2;
+    @apply uppercase text-facebook-url font-normal text-[0.8125rem] pt-3 px-4 mb-2;
   }
 
   .facebook .title {
-    @apply pb-3 px-4 font-semibold text-[1.0625rem] text-[#E4E6EB];
+    @apply pb-3 px-4 font-semibold text-[1.0625rem] text-facebook-title;
   }
 
   .linkedin {
-    @apply overflow-hidden rounded-[0.8rem] border border-[#ffffff2e] bg-[#1b1f23] max-w-[552px];
+    @apply overflow-hidden rounded-[0.8rem] border border-linkedin-border bg-linkedin-background max-w-[552px];
   }
 
   .linkedin .title {
@@ -74,30 +74,30 @@
   }
 
   .slack {
-    @apply px-3 max-w-[520px] relative before:content-[''] before:w-1 before:h-full before:bg-[#35373b] before:rounded-full before:left-0 before:top-0 before:absolute;
+    @apply px-3 max-w-[520px] relative before:content-[''] before:w-1 before:h-full before:bg-slack-background before:rounded-full before:left-0 before:top-0 before:absolute;
   }
 
   .slack .url {
-    @apply text-[#d1d2d3] text-[15px] font-medium;
+    @apply text-slack-url text-[15px] font-medium;
   }
 
   .slack .title {
-    @apply text-[#1d9bd1] text-[15px] font-bold;
+    @apply text-slack-title text-[15px] font-bold;
   }
 
   .slack .description {
-    @apply text-[#d1d2d3] text-[15px] font-normal;
+    @apply text-slack-description text-[15px] font-normal;
   }
 
   .slack .image-wrapper {
-    @apply max-w-[360px] overflow-hidden rounded-lg mt-1.5 border border-[#35373b];
+    @apply max-w-[360px] overflow-hidden rounded-lg mt-1.5 border border-slack-background;
   }
 
   .twitter {
-    @apply max-w-[506px] overflow-hidden rounded-2xl bg-black border border-[#2f3336] text-[#e7e9ea] relative;
+    @apply max-w-[506px] overflow-hidden rounded-2xl bg-black border border-twitter-border text-twitter-title relative;
   }
 
   .twitter .url {
-    @apply absolute left-3 bottom-3 bg-[#9d99997a] text-[13px] text-white px-1 rounded;
+    @apply absolute left-3 bottom-3 bg-twitter-url text-[13px] text-white px-1 rounded;
   }
 }

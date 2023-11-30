@@ -4,7 +4,7 @@ const LogoIcon = () => {
       viewBox="0 0 276 274"
       width="5rem"
       height="5rem"
-      className="fill-[#b4ff5c]"
+      className="fill-brand"
     >
       <g id="Layer">
         <g id="Layer">

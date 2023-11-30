@@ -10,7 +10,7 @@ type ToastProps = {
 };
 
 const Toast = ({ duration, message, type }: ToastProps) => {
-  let backgroundColor = "bg-[#b4ff5c]";
+  let backgroundColor = "bg-brand";
   const toast = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
 
@@ -25,7 +25,7 @@ const Toast = ({ duration, message, type }: ToastProps) => {
       backgroundColor = "bg-amber-300";
       break;
     default:
-      backgroundColor = "bg-[#b4ff5c]";
+      backgroundColor = "bg-brand";
       break;
   }
 

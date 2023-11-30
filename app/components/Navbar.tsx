@@ -2,13 +2,13 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <header className="bg-[#0a0909]">
+    <header className="bg-dark">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
             <Link
               href="/"
-              className="inline-block text-[#b4ff5c] hover:underline underline-offset-8"
+              className="inline-block text-brand hover:underline underline-offset-8"
             >
               metatags
             </Link>

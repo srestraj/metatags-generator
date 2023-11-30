@@ -5,8 +5,8 @@ export default function Home() {
     <div className="relative overflow-hidden min-h-screen">
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
-          <p className="text-2xl font-bold text-[#f5f3f3] mb-2">Extract</p>
-          <h1 className="text-5xl md:text-7xl font-bold leading-10 text-[#b4ff5c]">
+          <p className="text-2xl font-bold text-light mb-2">Extract</p>
+          <h1 className="text-5xl md:text-7xl font-bold leading-10 text-brand">
             Meta tags
           </h1>
 

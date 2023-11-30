@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${beVietnamPro.className} bg-[#0a0909]`}>
+      <body className={`${beVietnamPro.className} bg-dark`}>
         <Navbar />
         {children}
       </body>

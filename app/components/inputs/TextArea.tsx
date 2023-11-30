@@ -23,7 +23,7 @@ const TextArea = ({
         focus:outline-none
         border
         border-neutral-600
-        focus:border-[#b4ff5c]
+        focus:border-brand
         p-2
         rounded-lg
         transition-all

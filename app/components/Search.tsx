@@ -53,7 +53,7 @@ const Search = () => {
               text-sm
               font-semibold
               rounded-lg
-              bg-[#b4ff5c]
+              bg-brand
               text-neutral-800
               disabled:opacity-50
               disabled:pointer-events-none

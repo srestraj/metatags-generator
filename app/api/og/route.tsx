@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import LogoIcon from "@/app/components/icons/Logo";
-import Globe from "@/app/components/illustrations/Globe";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 

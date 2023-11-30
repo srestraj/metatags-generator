@@ -77,7 +77,7 @@ const ImageInput = ({
               onClick={triggerImageUpload}
               className="w-12 h-12 group hover:bg-neutral-100/60 rounded-full bg-neutral-300/50 inline-flex items-center justify-center transition-all duration-300"
             >
-              <ArrowUp classNames="fill-[#b4ff5c] w-7 transition-all duration-300 group-hover:-translate-y-1 group-hover:fill-neutral-700" />
+              <ArrowUp classNames="fill-brand w-7 transition-all duration-300 group-hover:-translate-y-1 group-hover:fill-neutral-700" />
             </button>
             <span className="lg:text-base text-sm text-neutral-200">
               Add image or{" "}

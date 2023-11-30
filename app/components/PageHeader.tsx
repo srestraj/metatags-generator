@@ -13,7 +13,7 @@ const PageHeader = ({ url, title }: PageHeaderProps) => {
         <ArrowLeft classNames="group-hover:-translate-x-2 transition-all duration-200 w-6 fill-neutral-100" />
       </Link>
       {url && <span className="text-lg text-neutral-200">Meta tags from</span>}
-      <h3 className="md:text-2xl text-xl font-bold text-[#b4ff5c]">
+      <h3 className="md:text-2xl text-xl font-bold text-brand">
         {title ? (
           title
         ) : (
