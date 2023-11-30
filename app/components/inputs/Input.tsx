@@ -6,6 +6,7 @@ type InputProps = {
   noBorder?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeHolder?: string;
+  required?: boolean;
   type: string;
 };
 
@@ -17,6 +18,7 @@ const Input = ({
   noBorder,
   onChange,
   placeHolder,
+  required,
   type,
 }: InputProps) => {
   return (
@@ -43,6 +45,7 @@ const Input = ({
       autoFocus={autoFocus}
       placeholder={placeHolder}
       autoComplete="off"
+      required={required}
     />
   );
 };

@@ -35,6 +35,7 @@ const Search = () => {
             noBorder={true}
             onChange={validateUrl}
             placeHolder="Enter website URL"
+            required={true}
             type="url"
           />
         </div>
