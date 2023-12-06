@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ImageInput from "./inputs/ImageInput";
 import TextArea from "./inputs/TextArea";
 import Input from "./inputs/Input";
@@ -30,11 +30,6 @@ const GeneratorSidebar = ({ handleParamsUpdate }: GeneratorSidebarProps) => {
   const [logoUrl, setLogoUrl] = useState<string>("");
   const [mainImageUrl, setMainImageUrl] = useState<string>("");
   const [logoRatio, setLogoRatio] = useState<string>("1:1");
-
-  const logoInput = useRef<HTMLInputElement | null>(null);
-  const mainImageInput = useRef<HTMLInputElement | null>(null);
-  const imageHolder = useRef<HTMLDivElement | null>(null);
-  const logoHolder = useRef<HTMLDivElement | null>(null);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(event.target.value);
@@ -77,45 +72,9 @@ const GeneratorSidebar = ({ handleParamsUpdate }: GeneratorSidebarProps) => {
     return result;
   };
 
-  const handleFileInput = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (event.target.files?.length && imageHolder.current) {
-      const result = await uploadImage(event.target.files[0]);
-      setMainImageUrl(result);
-    }
-  };
-
   const triggerImageUpload = async (file: File, type: "logo" | "main") => {
     const result = await uploadImage(file);
     type === "logo" ? setLogoUrl(result) : setMainImageUrl(result);
-  };
-
-  const handleLogoInput = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (event.target.files?.length && logoHolder.current) {
-      const result = await uploadImage(event.target.files[0]);
-      setLogoUrl(result);
-    }
-  };
-
-  const handleLogoUrlInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLogoUrl(event.target.value);
-  };
-
-  const handleMainImgUrlInput = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setMainImageUrl(event.target.value);
-  };
-
-  const triggerFileUpload = () => {
-    mainImageInput?.current?.click();
-  };
-
-  const triggerLogoUpload = () => {
-    logoInput?.current?.click();
   };
 
   return (
