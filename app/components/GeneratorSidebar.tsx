@@ -85,6 +85,7 @@ const GeneratorSidebar = ({ handleParamsUpdate }: GeneratorSidebarProps) => {
         imgUrl={logoUrl}
         inputId="logoImg"
         isInput={logoUrlInput}
+        title="Logo"
         toggleInput={(e: boolean) => setLogoUrlInput(e)}
         triggerUpload={(file: File) => triggerImageUpload(file, "logo")}
       />
@@ -95,6 +96,7 @@ const GeneratorSidebar = ({ handleParamsUpdate }: GeneratorSidebarProps) => {
         imgUrl={mainImageUrl}
         inputId="mainImg"
         isInput={mainImgUrlInput}
+        title="Main image"
         toggleInput={(e: boolean) => setMainImgUrlInput(e)}
         triggerUpload={(file: File) => triggerImageUpload(file, "main")}
       />

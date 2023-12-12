@@ -10,6 +10,7 @@ type ImageInputProps = {
   imgUrl: string;
   inputId: string;
   isInput: boolean;
+  title: string;
   toggleInput: (val: boolean) => void;
   triggerUpload: (file: File) => void;
 };
@@ -20,6 +21,7 @@ const ImageInput = ({
   imgUrl,
   inputId,
   isInput,
+  title,
   toggleInput,
   triggerUpload,
 }: ImageInputProps) => {
@@ -48,7 +50,7 @@ const ImageInput = ({
         htmlFor={inputId}
         className="text-neutral-300 w-full flex items-center justify-between mb-2"
       >
-        <span>Logo</span>
+        <span>{title}</span>
         {isInput && (
           <button
             onClick={() => toggleInput(false)}
