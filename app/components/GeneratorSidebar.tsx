@@ -96,7 +96,7 @@ const GeneratorSidebar = ({ handleParamsUpdate }: GeneratorSidebarProps) => {
         imgUrl={mainImageUrl}
         inputId="mainImg"
         isInput={mainImgUrlInput}
-        title="Main image"
+        title="og:image"
         toggleInput={(e: boolean) => setMainImgUrlInput(e)}
         triggerUpload={(file: File) => triggerImageUpload(file, "main")}
       />

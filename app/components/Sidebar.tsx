@@ -108,7 +108,7 @@ const Sidebar = ({
           imgUrl={updatedImage}
           inputId="logoImg"
           isInput={isInput}
-          title="Logo"
+          title="og:image"
           toggleInput={(e: boolean) => setIsInput(e)}
           triggerUpload={(file: File) => triggerImageUpload(file)}
         />
