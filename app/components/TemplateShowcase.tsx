@@ -35,6 +35,7 @@ const TemplateShowcase = () => {
               key={template.title}
               title={template.title}
               image={template.imageUrl}
+              isOg={true}
             />
           ))}
         </div>
