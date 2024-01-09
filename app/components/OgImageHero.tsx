@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AppScreenshot from "./AppScreenshot";
 import TemplateShowcase from "./TemplateShowcase";
 import Stroke from "./icons/Stroke";
@@ -20,6 +21,15 @@ const OgHero = () => {
             Use our built-in <strong>og:image generator</strong> to generate
             og:images for your own site.
           </p>
+
+          <div className="mt-16 w-full">
+            <Link
+              href="/generate"
+              className="px-10 py-4 rounded-full border border-brand font-medium text-lg hover:bg-brand hover:text-dark transition-all duration-500"
+            >
+              Generate
+            </Link>
+          </div>
         </div>
       </div>
       <AppScreenshot imageUrl="/img/og-generator-snapshot.png" />
