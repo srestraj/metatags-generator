@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 
-const beVietnamPro = Be_Vietnam_Pro({
+const inter = Inter({
   subsets: ["latin-ext"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${beVietnamPro.className} bg-dark`}>
+      <body className={`${inter.className} bg-dark`}>
         <Navbar />
         {children}
       </body>

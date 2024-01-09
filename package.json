@@ -15,6 +15,7 @@
     "react": "^18",
     "react-detect-click-outside": "^1.1.7",
     "react-dom": "^18",
+    "react-parallax-tilt": "^1.7.181",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
