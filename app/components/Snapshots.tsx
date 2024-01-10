@@ -1,26 +1,37 @@
 import SocialSnapshot from "./SocialSnapshot";
 
+const sampleMetatagJson = {
+  description:
+    "Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts, and discover plugins for your favorite writing, design and blogging tools. Explore the origins, history and meaning of the famous passage, and learn how Lorem Ipsum went from scrambled Latin passage to ubiqitous dummy text.",
+  icon: "https://loremipsum.io/assets/images/favicon.png",
+  image:
+    "https://loremipsum.io/assets/images/lorem-ipsum-generator-custom-placeholder-text.jpg",
+  siteName: null,
+  title: "Lorem Ipsum – Generator, Origins and Meaning",
+  url: "https://loremipsum.io",
+};
+
 const Snapshots = () => {
   const socialList = [
     {
       title: "Facebook",
-      imageUrl: "/img/facebook-snapshot.png",
+      type: "facebook",
     },
     {
       title: "Twitter",
-      imageUrl: "/img/twitter-snapshot.png",
+      type: "twitter",
     },
     {
       title: "LinkedIn",
-      imageUrl: "/img/linkedin-snapshot.png",
+      type: "linkedin",
     },
     {
       title: "Pinterest",
-      imageUrl: "/img/pinterest-snapshot.png",
+      type: "pinterest",
     },
     {
       title: "Slack",
-      imageUrl: "/img/slack-snapshot.png",
+      type: "slack",
     },
   ];
   return (
@@ -41,7 +52,15 @@ const Snapshots = () => {
             <SocialSnapshot
               key={item.title}
               title={item.title}
-              image={item.imageUrl}
+              cardDetails={{
+                description: sampleMetatagJson.description,
+                icon: sampleMetatagJson.icon,
+                image: sampleMetatagJson.image,
+                siteName: null,
+                title: sampleMetatagJson.title,
+                type: item.type,
+                url: sampleMetatagJson.url,
+              }}
             />
           ))}
         </div>

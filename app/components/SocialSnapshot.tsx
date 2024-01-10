@@ -1,12 +1,21 @@
-import Image from "next/image";
+import Card from "./Card";
 
 type SnapshotProps = {
-  image: string;
+  image?: string;
   isOg?: boolean;
   title: string;
+  cardDetails?: {
+    description: string;
+    icon: string;
+    image: string;
+    siteName: string | null;
+    title: string;
+    type: string;
+    url: string;
+  };
 };
 
-const SocialSnapshot = ({ image, isOg, title }: SnapshotProps) => {
+const SocialSnapshot = ({ image, isOg, title, cardDetails }: SnapshotProps) => {
   return (
     <div className="w-full grid md:grid-cols-3 md:gap-8 gap-4">
       <div className="md:col-span-1 place-self-start md:sticky top-16">
@@ -15,14 +24,15 @@ const SocialSnapshot = ({ image, isOg, title }: SnapshotProps) => {
         </h3>
       </div>
       <div className="md:col-span-2">
-        <div className="w-full rounded-xl border-2 border-neutral-700 overflow-hidden">
-          {isOg ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={image} alt="screenshot" className="w-full h-full" />
-          ) : (
-            <Image src={image} width={1200} height={800} alt="screenshot" />
-          )}
-        </div>
+        {isOg && image && (
+          <div className="w-full rounded-xl border-2 border-neutral-700 overflow-hidden">
+            {
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={image} alt="screenshot" className="w-full h-full" />
+            }
+          </div>
+        )}
+        {cardDetails && <Card data={cardDetails} />}
       </div>
     </div>
   );
